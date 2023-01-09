@@ -19,9 +19,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        peliculas.add(new Pelicula(1, "Avengers", "2012", 1));
-        peliculas.add(new Pelicula(1, "Avatar", "2009", 2));
-        peliculas.add(new Pelicula(1, "Harry Potter", "2001", 3));
+        peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
+        peliculas.add(new Pelicula(1, "Avatar", "2009", R.mipmap.avatar_foreground));
+        peliculas.add(new Pelicula(1, "Harry Potter", "2001", R.mipmap.harry_foreground));
+        peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
+        peliculas.add(new Pelicula(1, "Avatar", "2009", R.mipmap.avatar_foreground));
+        peliculas.add(new Pelicula(1, "Harry Potter", "2001", R.mipmap.harry_foreground));
+        peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
+        peliculas.add(new Pelicula(1, "Avatar", "2009", R.mipmap.avatar_foreground));
+        peliculas.add(new Pelicula(1, "Alicia en el pais de las maravillas", "2001", R.mipmap.harry_foreground));
+        peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
+        peliculas.add(new Pelicula(1, "Avatar", "2009", R.mipmap.avatar_foreground));
+        peliculas.add(new Pelicula(1, "Harry Potter", "2001", R.mipmap.harry_foreground));
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         System.out.println(peliculas.size() + " peliculas");

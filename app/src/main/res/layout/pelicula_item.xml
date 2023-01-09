@@ -35,27 +35,27 @@
            <LinearLayout
                android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
-               android:gravity="center"
+               android:layout_weight="2"
                android:orientation="vertical">
 
                <TextView
                    android:id="@+id/Titulo"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:padding="16dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="0sp"
+                   android:layout_weight="1"
+                   android:ellipsize="end"
+                   android:maxLines="1"
                    android:textSize="22sp"
                    android:textStyle="bold"
-                   android:textAlignment="center"/>
-
+                   android:gravity="bottom|left"/>
                <TextView
                    android:id="@+id/anio"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:padding="16dp"
-                   android:textSize="18sp"
+                   android:layout_width="match_parent"
+                   android:layout_height="0sp"
+                   android:layout_weight="1"
+                   android:textSize="14sp"
                    android:textStyle="bold"
-                   android:textAlignment="center"/>
+                   android:gravity="start"/>
            </LinearLayout>
 
            <LinearLayout
@@ -63,21 +63,26 @@
                android:layout_height="match_parent"
                android:layout_weight="1"
                android:gravity="center"
+               android:padding="6dp"
                android:orientation="vertical">
 
                <Button
                    android:id="@+id/botonForo"
-                   android:layout_width="wrap_content"
+                   android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:padding="8dp"
-                   android:text="Ir al Foro" />
+                   android:padding="6dp"
+                   android:text="Ir a Foro"
+                   android:textSize="11sp"
+                   android:textAllCaps="false"/>
 
                <Button
                    android:id="@+id/botonReserva"
-                   android:layout_width="wrap_content"
+                   android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:padding="8dp"
-                   android:text="Ir a Reserva" />
+                   android:padding="6dp"
+                   android:text="Ir a Reserva"
+                   android:textSize="11sp"
+                   android:textAllCaps="false"/>
            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

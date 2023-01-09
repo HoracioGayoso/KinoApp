@@ -1,9 +1,11 @@
 package com.tpintegrador.kinoapp;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,7 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
         TextView anio;
         Button foro;
         Button reserva;
+        ImageView imagen;
 
         public PeliculaViewHolder(PeliculaItemBinding binding) {
             super(binding.getRoot());
@@ -33,10 +36,12 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
             anio = mBinding.anio;
             foro = mBinding.botonForo;
             reserva = mBinding.botonReserva;
+            imagen = mBinding.IconoPelicula;
         }
         public void bind(Pelicula pelicula){
             titulo.setText(pelicula.getNombre());
             anio.setText(pelicula.getAño());
+            imagen.setImageResource(pelicula.getImagen());
             //mBinding.IconoPelicula.setId(pelicula.getImagen());
          /*   foro.setOnClickListener(new View.OnClickListener() {
                 @Override

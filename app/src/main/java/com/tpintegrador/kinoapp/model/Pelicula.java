@@ -4,15 +4,15 @@ public class Pelicula {
     Integer id;
     String nombre;
     String año;
-    Integer imagen;
+    int imagen;
 
     public Pelicula(){}
 
-    public Pelicula(Integer id, String nombre, String año, Integer imagen) {
+    public Pelicula(Integer id, String nombre, String año, int imagen) {
         this.id = id;
         this.nombre = nombre;
         this.año = año;
-       //this.imagen = imagen;
+        this.imagen = imagen;
     }
 
     public Integer getId() {
@@ -39,11 +39,11 @@ public class Pelicula {
         this.año = año;
     }
 
-    /*public Integer getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
-    public void setImagen(Integer imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
-    }*/
+    }
 }
