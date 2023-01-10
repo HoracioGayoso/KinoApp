@@ -1,20 +1,23 @@
 package com.tpintegrador.kinoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.tpintegrador.kinoapp.databinding.ActivityMainBinding;
+import com.tpintegrador.kinoapp.databinding.ListaPelisBinding;
 import com.tpintegrador.kinoapp.model.Pelicula;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ListaPeliculasActivity extends AppCompatActivity {
     List<Pelicula> peliculas = new ArrayList<Pelicula>();
-    private ActivityMainBinding mBinding;
+    private ListaPelisBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
         peliculas.add(new Pelicula(1, "Avatar", "2009", R.mipmap.avatar_foreground));
         peliculas.add(new Pelicula(1, "Harry Potter", "2001", R.mipmap.harry_foreground));
-        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        mBinding = ListaPelisBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         System.out.println(peliculas.size() + " peliculas");
         PeliculasRecyclerAdapter mAdapter = new PeliculasRecyclerAdapter(peliculas);
@@ -39,5 +42,13 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         peliculasRecyclerView.setLayoutManager(layoutManager);
         peliculasRecyclerView.setAdapter(mAdapter);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView cabecera = findViewById(R.id.Cabecera);
+        ImageView logout = findViewById(R.id.IconoLogOut);
+        logout.setImageResource(R.drawable.ic_baseline_logout_24);
+        ImageView profile = findViewById(R.id.IconoPerfil);
+        profile.setImageResource(R.drawable.ic_baseline_person_24);
+        cabecera.setText("Peliculas");
+        setSupportActionBar(toolbar);
     }
 }
