@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#1616D3</color>
+    <color name="grey">#808080</color>
+
+
+    <!--Colores de tincho-->
+    <color name="violet">#6750a4</color>
+    <color name="bar">#f3edf7</color>
+    <color name="tagReview">#f08f95</color>
+    <color name="tagTeories">#fef4a6</color>
+    <color name="tagCuriosities">#9adb9a</color>
+    <color name="tagAspects">#8ed4f8</color>
+
+
+
 </resources>

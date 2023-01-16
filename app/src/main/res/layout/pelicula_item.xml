@@ -30,7 +30,8 @@
                    android:id="@+id/IconoPelicula"
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
-                   android:src="@mipmap/harry_foreground" />
+                   android:src="@mipmap/harry_foreground"
+                   />
            </LinearLayout>
 
            <LinearLayout
@@ -49,6 +50,7 @@
                    android:textSize="22sp"
                    android:textStyle="bold"
                    android:gravity="bottom|left"
+                   android:textColor="@color/black"
                    />
                <TextView
                    android:id="@+id/anio"
@@ -57,7 +59,8 @@
                    android:layout_weight="1"
                    android:textSize="14sp"
                    android:textStyle="bold"
-                   android:gravity="start"/>
+                   android:gravity="start"
+                   android:textColor="@color/black"/>
            </LinearLayout>
 
            <LinearLayout
@@ -68,23 +71,29 @@
                android:padding="6dp"
                android:orientation="vertical">
 
-               <Button
+               <com.google.android.material.button.MaterialButton
                    android:id="@+id/botonForo"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   app:backgroundTint="@color/violet"
                    android:padding="6dp"
+                   android:textStyle="bold"
                    android:text="Ir a Foro"
                    android:textSize="11sp"
-                   android:textAllCaps="false"/>
+                   android:textAllCaps="false"
+                   app:cornerRadius="90dp"/>
 
-               <Button
+               <com.google.android.material.button.MaterialButton
                    android:id="@+id/botonReserva"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   app:backgroundTint="@color/violet"
                    android:padding="6dp"
+                   android:textStyle="bold"
                    android:text="Ir a Reserva"
                    android:textSize="11sp"
-                   android:textAllCaps="false"/>
+                   android:textAllCaps="false"
+                   app:cornerRadius="90dp"/>
            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
