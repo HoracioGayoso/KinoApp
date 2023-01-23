@@ -14,7 +14,7 @@
         android:gravity="center"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         />
 
     <ImageView
@@ -43,6 +43,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:textColor="@color/black"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

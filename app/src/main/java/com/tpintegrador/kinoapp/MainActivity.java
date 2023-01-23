@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         maBinding = MainActivityBinding.inflate(getLayoutInflater());
         tbBinding = ToolBarBinding.inflate(getLayoutInflater());
         setContentView(maBinding.getRoot());
-        tbBinding.Cabecera.setText("Peliculas");TextView cabecera = findViewById(R.id.Cabecera);
-        cabecera.setText("Peliculas");
+        tbBinding.Cabecera.setText("Peliculas");
         tbBinding.IconoLogOut.setImageResource(R.drawable.ic_baseline_logout_24);
         tbBinding.IconoPerfil.setImageResource(R.drawable.ic_baseline_person_24);
         Toolbar toolbar = tbBinding.toolbar;

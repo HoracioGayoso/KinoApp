@@ -1,6 +1,7 @@
 package com.tpintegrador.kinoapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +34,8 @@ public class LoginFragment extends Fragment {
         logginBinding.ingresarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(usuario.getEditText().equals("usuario")){
-                    if(contraseña.getEditText().equals("contraseña")){
+                if(usuario.getEditText().getText().toString().equals("hola")){
+                    if(contraseña.getEditText().getText().toString().equals("contraseña")){
                         Fragment listaPeliculasFragment = new ListaPeliculasFragment();
                         ((MainActivity)getActivity()).openFragment(listaPeliculasFragment);
                     }
