@@ -34,7 +34,6 @@
         android:hint="@string/user"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxBackgroundColor="@color/white"
-        app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="2dp"
         app:boxCornerRadiusBottomEnd="45dp"
         app:boxCornerRadiusTopEnd="45dp"
@@ -63,23 +62,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <CheckBox
-            android:id="@+id/recordar_usuario_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recordar mi usuario"
-            android:textColor="@color/grey"
-            android:gravity="center"
-            android:textAlignment="center"
-            />
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -89,6 +75,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/recordar_usuario_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Recordar mi usuario"
+                    android:textAlignment="center"
+                    android:textColor="@color/grey" />
+            </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ingresar_button"
                 android:layout_width="match_parent"
