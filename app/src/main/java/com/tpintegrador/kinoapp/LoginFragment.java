@@ -40,7 +40,7 @@ public class LoginFragment extends Fragment {
                         ((MainActivity)getActivity()).openFragment(listaPeliculasFragment);
                     }
                 }else {
-                    Toast.makeText(getContext(), "usuario o contraseñas incorrectos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "boton click", Toast.LENGTH_SHORT).show();
                 }
             }
         });

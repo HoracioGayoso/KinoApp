@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ListaPeliculasFragment">
-        <include layout="@layout/tool_bar"/>
+        <include
+            layout="@layout/tool_bar"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/PeliculaRecycler"
             android:layout_width="match_parent"

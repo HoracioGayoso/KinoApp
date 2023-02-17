@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tpintegrador.kinoapp.databinding.MainActivityBinding;
@@ -24,11 +25,6 @@ public class MainActivity extends AppCompatActivity {
         maBinding = MainActivityBinding.inflate(getLayoutInflater());
         tbBinding = ToolBarBinding.inflate(getLayoutInflater());
         setContentView(maBinding.getRoot());
-        tbBinding.Cabecera.setText("Peliculas");
-        tbBinding.IconoLogOut.setImageResource(R.drawable.ic_baseline_logout_24);
-        tbBinding.IconoPerfil.setImageResource(R.drawable.ic_baseline_person_24);
-        Toolbar toolbar = tbBinding.toolbar;
-        setSupportActionBar(toolbar);
         LoginFragment loginFragment = new LoginFragment();
         openFragment(loginFragment);
     }
