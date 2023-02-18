@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "428768501957",
+    "project_id": "kinoapp-f3039",
+    "storage_bucket": "kinoapp-f3039.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428768501957:android:714dd83a25bd81435b50ac",
+        "android_client_info": {
+          "package_name": "com.tpintegrador.kinoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428768501957-4a3htto5gobh272gi8ujioc54o12qgqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0BbYMu7dgk-Qf7y6ZhkvIwDs9V5HPmOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428768501957-4a3htto5gobh272gi8ujioc54o12qgqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

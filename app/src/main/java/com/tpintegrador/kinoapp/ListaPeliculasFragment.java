@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,16 +28,20 @@ public class ListaPeliculasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = ListaPelisBinding.inflate(inflater, container, false);
         View view = inflater.inflate(R.layout.lista_pelis, container, false);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        TextView cabecera = view.findViewById(R.id.Cabecera);
-        cabecera.setText("Peliculas");
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         return mBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        TextView cabecera = view.findViewById(R.id.Cabecera);
+        ImageView logout = view.findViewById(R.id.IconoLogOut);
+        logout.setImageResource(R.drawable.ic_baseline_logout_24);
+        ImageView perfil = view.findViewById(R.id.IconoPerfil);
+        perfil.setImageResource(R.drawable.ic_baseline_person_24);
+        cabecera.setText("Peliculas");
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         peliculas.add(new Pelicula(1, "Avengers", "2012", R.mipmap.avengers));
         peliculas.add(new Pelicula(2, "Avatar", "2009", R.mipmap.avatar_foreground));
         peliculas.add(new Pelicula(3, "Harry Potter", "2001", R.mipmap.harry_foreground));

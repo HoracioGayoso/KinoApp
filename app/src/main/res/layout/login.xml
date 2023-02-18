@@ -26,7 +26,7 @@
         android:padding="20dp"></ImageView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usuario_editText"
+        android:id="@+id/usuario_textImputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -48,7 +48,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/contraseña_editText"
+        android:id="@+id/contrasena_textImputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
