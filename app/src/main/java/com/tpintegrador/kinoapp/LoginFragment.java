@@ -54,7 +54,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void ingresar(TextInputLayout usuario, TextInputLayout contraseña) {
-        if(usuario.getEditText().getText().toString().isEmpty() &&
+        if(usuario.getEditText().getText().toString().isEmpty() ||
                 contraseña.getEditText().getText().toString().isEmpty()){
             Toast.makeText(getContext(), "Complete los datos", Toast.LENGTH_SHORT).show();
         }else {
@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        showNewFragment(usuario, contraseña);
+                        showNewFragment();
                     }
                     else {
                         showAlert();
@@ -74,7 +74,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void crearUsuario(TextInputLayout usuario, TextInputLayout contraseña) {
-        if(usuario.getEditText().getText().toString().isEmpty() &&
+        if(usuario.getEditText().getText().toString().isEmpty() ||
                 contraseña.getEditText().getText().toString().isEmpty()){
             Toast.makeText(getContext(), "Complete los datos", Toast.LENGTH_SHORT).show();
         }else {
@@ -96,7 +96,7 @@ public class LoginFragment extends Fragment {
     private void showAlert() {
         Toast.makeText(getContext(), "No existe usuario", Toast.LENGTH_SHORT).show();
     }
-    private void showNewFragment(TextInputLayout usuario, TextInputLayout contraseña){
+    private void showNewFragment(){
         ListaPeliculasFragment listaPeliculasFragment = new ListaPeliculasFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, listaPeliculasFragment);
