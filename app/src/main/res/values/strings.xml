@@ -3,4 +3,12 @@
     <string name="user">Usuario</string>
     <string name="pass">Contraseña</string>
     <string name="olvido_contraseña"><a href="https://www.geeksforgeeks.org/">¿Olvidaste tu contraseña?</a></string>
+
+    <string-array name="Categorias">
+        <item>Please select a value</item>
+        <item>Opinion</item>
+        <item>Efectos</item>
+        <item>Queseyo</item>
+        <item>asdas</item>
+    </string-array>
 </resources>
