@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tpintegrador.kinoapp.databinding.MainActivityBinding;
@@ -17,9 +16,11 @@ import com.tpintegrador.kinoapp.databinding.ToolBarBinding;
 public class MainActivity extends AppCompatActivity {
     private MainActivityBinding maBinding;
     private ToolBarBinding tbBinding;
+    private AppDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        database = AppDatabase.getInstance(this);
         maBinding = MainActivityBinding.inflate(getLayoutInflater());
         tbBinding = ToolBarBinding.inflate(getLayoutInflater());
         setContentView(maBinding.getRoot());
@@ -62,5 +63,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         LoginFragment loginFragment = new LoginFragment();
         openFragment(loginFragment);
+    }
+
+    public AppDatabase getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(AppDatabase database) {
+        this.database = database;
     }
 }
