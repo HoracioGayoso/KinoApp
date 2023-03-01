@@ -70,7 +70,19 @@ public class LoginFragment extends Fragment {
                 crearUsuario(logginBinding.nuevoUsuario, logginBinding.nuevaContrasena);
             }
         });
-
+        logginBinding.cancelarNuevoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout layoutUsuario = logginBinding.layoutSecundario;
+                LinearLayout layoutPrincipal = logginBinding.layoutPrincipal;
+                TextInputLayout usuario = logginBinding.nuevoUsuario;
+                TextInputLayout contraseña = logginBinding.nuevaContrasena;
+                usuario.getEditText().getText().clear();
+                contraseña.getEditText().getText().clear();
+                layoutPrincipal.setVisibility(Integer.parseInt("0"));
+                layoutUsuario.setVisibility(Integer.parseInt("8"));
+            }
+        });
     }
 
     private void ingresar(TextInputLayout usuario, TextInputLayout contraseña) {
