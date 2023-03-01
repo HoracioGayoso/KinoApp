@@ -1,133 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center">
-
-    <TextView
-        android:id="@+id/titulo_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="¡Bienvenido a Kino!"
-        android:gravity="center"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        />
-
-    <ImageView
-        android:id="@+id/login_icon"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:src="@drawable/ic_baseline_account_circle_24"
-        android:layout_gravity="center|bottom"
-        android:padding="20dp"></ImageView>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usuario_textImputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="5dp"
-        android:hint="@string/user"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeWidth="2dp"
-        app:boxCornerRadiusBottomEnd="45dp"
-        app:boxCornerRadiusTopEnd="45dp"
-        app:boxCornerRadiusBottomStart="45dp"
-        app:boxCornerRadiusTopStart="45dp"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usuario_textInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/contrasena_textImputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        app:boxBackgroundColor="@color/white"
-        android:hint="@string/pass"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeWidth="2dp"
-        app:boxCornerRadiusBottomEnd="45dp"
-        app:boxCornerRadiusTopEnd="45dp"
-        app:boxCornerRadiusBottomStart="45dp"
-        app:boxCornerRadiusTopStart="45dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/contrasena_textInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
+    android:layout_height="match_parent">
     <LinearLayout
+        android:id="@+id/layoutPrincipal"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:gravity="center">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <LinearLayout
+        <TextView
+            android:id="@+id/titulo_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¡Bienvenido a Kino!"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <ImageView
+            android:id="@+id/login_icon"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            android:layout_gravity="center|bottom"
+            android:padding="20dp"></ImageView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usuario_textImputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="5dp"
+            android:hint="@string/user"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="45dp"
+            app:boxCornerRadiusTopEnd="45dp"
+            app:boxCornerRadiusBottomStart="45dp"
+            app:boxCornerRadiusTopStart="45dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usuario_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:textColor="@color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <CheckBox
-                    android:id="@+id/recordar_usuario_checkbox"
-                    android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/contrasena_textImputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            app:boxBackgroundColor="@color/white"
+            android:hint="@string/pass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="45dp"
+            app:boxCornerRadiusTopEnd="45dp"
+            app:boxCornerRadiusBottomStart="45dp"
+            app:boxCornerRadiusTopStart="45dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/contrasena_textInputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Recordar mi usuario"
-                    android:textAlignment="center"
-                    android:textColor="@color/grey" />
-            </LinearLayout>
+                    android:orientation="horizontal">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/ingresar_button"
+                    <CheckBox
+                        android:id="@+id/recordar_usuario_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Recordar mi usuario"
+                        android:textAlignment="center"
+                        android:textColor="@color/grey" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/ingresar_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:backgroundTint="@color/violet"
+                    android:textStyle="bold"
+                    android:text="Ingresar"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/crear_usuario_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/violet"
+                    app:backgroundTint="@color/white"
+                    android:textStyle="bold"
+                    android:text="Crear Usuario"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"
+                    app:strokeColor="@color/violet"
+                    app:strokeWidth="1dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/olvido_contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/olvido_contraseña"
+            android:textColorLink="@color/violet"
+            android:linksClickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            />
+        <RelativeLayout android:id="@+id/popUpUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#BB000000"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/otro_boton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:backgroundTint="@color/violet"
+                    android:textStyle="bold"
+                    android:text="Ingresar"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutSecundario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:weightSum="10"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:gravity="center"
+
+            android:background="@color/black">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:backgroundTint="@color/violet"
-                android:textStyle="bold"
-                android:text="Ingresar"
-                android:textAllCaps="false"
-                app:cornerRadius="90dp"/>
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/crear_usuario_button"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ingrese nuevo usuario"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nuevoUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="@string/user"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nuevoUsuaio_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ingrese contraseña">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nuevaContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="@string/pass"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nuevaContrasena_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/violet"
-                app:backgroundTint="@color/white"
-                android:textStyle="bold"
-                android:text="Crear Usuario"
-                android:textAllCaps="false"
-                app:cornerRadius="90dp"
-                app:strokeColor="@color/violet"
-                app:strokeWidth="1dp"
-                />
+                android:gravity="center">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/confirmarNuevoUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:backgroundTint="@color/violet"
+                    android:textStyle="bold"
+                    android:text="Confirmar"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:id="@+id/olvido_contraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/olvido_contraseña"
-        android:textColorLink="@color/violet"
-        android:linksClickable="true"
-        android:gravity="center"
-        android:padding="10dp"
-        />
-</LinearLayout>
+</FrameLayout>

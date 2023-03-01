@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -47,7 +48,26 @@ public class LoginFragment extends Fragment {
         logginBinding.crearUsuarioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                crearUsuario(usuario, contraseña);
+
+                LinearLayout layoutUsuario = logginBinding.layoutSecundario;
+                LinearLayout layoutPrincipal = logginBinding.layoutPrincipal;
+                layoutPrincipal.setVisibility(Integer.parseInt("8"));
+                layoutUsuario.setVisibility(Integer.parseInt("0"));
+            }
+        });
+        logginBinding.confirmarNuevoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(usuario.getEditText().getText().toString().isEmpty() ||
+                        contraseña.getEditText().getText().toString().isEmpty()){
+                    showAlert("Complete los datos");
+                    return;
+                }
+                LinearLayout layoutUsuario = logginBinding.layoutSecundario;
+                LinearLayout layoutPrincipal = logginBinding.layoutPrincipal;
+                layoutUsuario.setVisibility(Integer.parseInt("8"));
+                layoutPrincipal.setVisibility(Integer.parseInt("0"));
+                crearUsuario(logginBinding.nuevoUsuario, logginBinding.nuevaContrasena);
             }
         });
 
@@ -56,8 +76,8 @@ public class LoginFragment extends Fragment {
     private void ingresar(TextInputLayout usuario, TextInputLayout contraseña) {
         if(usuario.getEditText().getText().toString().isEmpty() ||
                 contraseña.getEditText().getText().toString().isEmpty()){
-            Toast.makeText(getContext(), "Complete los datos", Toast.LENGTH_SHORT).show();
-        }else {
+            showAlert("Complete los datos");
+        } else {
             mAuth.signInWithEmailAndPassword(usuario.getEditText().getText().toString(),
                     contraseña.getEditText().getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -66,35 +86,31 @@ public class LoginFragment extends Fragment {
                         showNewFragment();
                     }
                     else {
-                        showAlert();
+                        showAlert("No existe usuario");
                     }
                 }
             });
         }
     }
+
 
     private void crearUsuario(TextInputLayout usuario, TextInputLayout contraseña) {
-        if(usuario.getEditText().getText().toString().isEmpty() ||
-                contraseña.getEditText().getText().toString().isEmpty()){
-            Toast.makeText(getContext(), "Complete los datos", Toast.LENGTH_SHORT).show();
-        }else {
-            mAuth.createUserWithEmailAndPassword(usuario.getEditText().getText().toString(),
-                    contraseña.getEditText().getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getContext(), "Usuario y contraseña creados", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        showAlert();
-                    }
+        mAuth.createUserWithEmailAndPassword(usuario.getEditText().getText().toString(),
+                contraseña.getEditText().getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    showAlert("Usuario y contraseña creados");
                 }
-            });
-        }
+                else {
+                    showAlert("No se pudo crear usuario");
+                }
+            }
+        });
     }
 
-    private void showAlert() {
-        Toast.makeText(getContext(), "No existe usuario", Toast.LENGTH_SHORT).show();
+    private void showAlert(String razon) {
+        Toast.makeText(getContext(), razon, Toast.LENGTH_SHORT).show();
     }
     private void showNewFragment(){
         ListaPeliculasFragment listaPeliculasFragment = new ListaPeliculasFragment();
