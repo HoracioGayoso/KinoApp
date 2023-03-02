@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Kinoapp</string>
-    <string name="user">Correo Electronico</string>
-    <string name="pass">Contraseña</string>
+    <string name="user">Ingrese un correo electronico</string>
+    <string name="pass">Ingrese una contraseña</string>
+    <string name="newpass">Confirme  la contraseña</string>
+    <string name="name">Ingrese el nombre del nuevo usuario</string>
+    <string name="surname">Ingrese el apellido del nuevo usuario</string>
     <string name="olvido_contraseña"><a href="https://www.geeksforgeeks.org/">¿Olvidaste tu contraseña?</a></string>
 
     <string-array name="Categorias">

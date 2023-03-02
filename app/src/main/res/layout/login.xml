@@ -136,26 +136,6 @@
             android:gravity="center"
             android:padding="10dp"
             />
-        <RelativeLayout android:id="@+id/popUpUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="#BB000000"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/otro_boton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:backgroundTint="@color/violet"
-                    android:textStyle="bold"
-                    android:text="Ingresar"
-                    android:textAllCaps="false"
-                    app:cornerRadius="90dp"/>
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutSecundario"
@@ -163,7 +143,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:visibility="gone"
-
         android:weightSum="10"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -172,7 +151,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="8"
             android:orientation="vertical"
-
             android:gravity="center"
             android:background="@drawable/fondo_redondeado">
             <LinearLayout
@@ -186,7 +164,7 @@
                     android:layout_height="match_parent"
                     android:text="Creacion de usuario"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="22dp"
                     android:paddingLeft="10dp"
@@ -200,8 +178,92 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Ingrese nuevo usuario"
-                    android:textColor="@color/white"
+                    android:text="Nombre"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nuevoUsuarioNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="@string/name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nuevoUsuarioNombre_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Apellido"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nuevoUsuarioApellido"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="@string/surname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nuevoUsuarioApellido_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Correo electronico"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -228,7 +290,7 @@
                     app:boxCornerRadiusTopStart="45dp"
                     >
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nuevoUsuaio_editText"
+                        android:id="@+id/nuevoUsuario_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textColor="@color/black"
@@ -241,8 +303,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Ingrese contraseña"
-                    android:textColor="@color/white"
+                    android:text="Contraseña"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -278,6 +340,47 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Confirme nueva contraseña"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmarNuevaContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="@string/newpass"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/confirmarNuevaContrasena_editText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center">
                 <com.google.android.material.button.MaterialButton
@@ -287,6 +390,7 @@
                     android:layout_margin="10dp"
                     app:backgroundTint="@color/violet"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="Cancelar"
                     android:textAllCaps="false"
                     app:cornerRadius="90dp"/>
@@ -297,6 +401,7 @@
                     android:layout_margin="10dp"
                     app:backgroundTint="@color/violet"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="Confirmar"
                     android:textAllCaps="false"
                     app:cornerRadius="90dp"/>
