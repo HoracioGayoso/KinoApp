@@ -1,24 +1,35 @@
 package com.tpintegrador.kinoapp.model;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Pelicula")
-public class Pelicula {
+import java.io.Serializable;
+
+@Entity(tableName = "Pelicula",
+        indices = {@Index(value = "nombre", unique = true)})
+public class Pelicula implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     Integer id;
+
+    @NonNull
     @ColumnInfo(name = "nombre")
     String nombre;
+
     @ColumnInfo(name = "año")
     String año;
+
     @ColumnInfo(name = "imagen_id")
     int imagen;
+
     @ColumnInfo(name = "sinopsis")
     String sinopsis;
+
     @Ignore
     public Pelicula(){}
 

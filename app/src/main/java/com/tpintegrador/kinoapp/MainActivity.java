@@ -8,12 +8,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tpintegrador.kinoapp.databinding.MainActivityBinding;
 import com.tpintegrador.kinoapp.databinding.ToolBarBinding;
+import com.tpintegrador.kinoapp.model.Pelicula;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListaPeliculasFragment.OnPeliculaClickListener {
     private MainActivityBinding maBinding;
     private ToolBarBinding tbBinding;
     private AppDatabase database;
@@ -32,7 +34,12 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
     }
-
+    public void openFragmentAddStack(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
     @Override
     public void onBackPressed() {
         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
@@ -71,5 +78,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void setDatabase(AppDatabase database) {
         this.database = database;
+    }
+
+    @Override
+    public void OnPeliculaClick(Pelicula pelicula) {
+        Toast.makeText(this, "llego a activity", Toast.LENGTH_SHORT).show();
+        ForoFragment foroFragment = new ForoFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("pelicula", pelicula);
+        foroFragment.setArguments(args);
+        openFragmentAddStack(foroFragment);
     }
 }

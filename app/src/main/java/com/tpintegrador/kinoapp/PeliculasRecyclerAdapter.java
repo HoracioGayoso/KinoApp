@@ -1,10 +1,12 @@
 package com.tpintegrador.kinoapp;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,16 +20,17 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
         .PeliculaViewHolder> {
 
     private List<Pelicula> mDataset;
+    private ListaPeliculasFragment.OnPeliculaClickListener adapterListener;
 
     public static class PeliculaViewHolder extends RecyclerView.ViewHolder{
         private PeliculaItemBinding mBinding;
-        TextView titulo;
-        TextView anio;
-        Button foro;
-        Button reserva;
-        ImageView imagen;
-
-        public PeliculaViewHolder(PeliculaItemBinding binding) {
+        private TextView titulo;
+        private TextView anio;
+        private Button foro;
+        private Button reserva;
+        private ImageView imagen;
+        private final ListaPeliculasFragment.OnPeliculaClickListener holderListener;
+        public PeliculaViewHolder(PeliculaItemBinding binding, ListaPeliculasFragment.OnPeliculaClickListener mListener) {
             super(binding.getRoot());
             this.mBinding = binding;
             titulo = mBinding.Titulo;
@@ -35,28 +38,27 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
             foro = mBinding.botonForo;
             reserva = mBinding.botonReserva;
             imagen = mBinding.IconoPelicula;
+            holderListener = mListener;
         }
         public void bind(Pelicula pelicula){
             titulo.setText(pelicula.getNombre());
             anio.setText(pelicula.getAño());
             imagen.setImageResource(pelicula.getImagen());
-            //mBinding.IconoPelicula.setId(pelicula.getImagen());
-         /*   foro.setOnClickListener(new View.OnClickListener() {
+            foro.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Toast.makeText(v.getContext(), "click", Toast.LENGTH_SHORT).show();
+                    int position = getBindingAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && holderListener != null) {
+                        holderListener.OnPeliculaClick(pelicula);
+                    }
                 }
             });
-            reserva.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });*/
         }
     }
-    public PeliculasRecyclerAdapter(List<Pelicula> myDataset){
+    public PeliculasRecyclerAdapter(List<Pelicula> myDataset, ListaPeliculasFragment.OnPeliculaClickListener mListener){
         mDataset = myDataset;
+        adapterListener = mListener;
     }
 
     @NonNull
@@ -64,7 +66,7 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
     public PeliculaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         PeliculaItemBinding binding = PeliculaItemBinding.inflate(LayoutInflater.
                 from(parent.getContext()), parent, false);
-        PeliculaViewHolder peliculaViewHolder = new PeliculaViewHolder(binding);
+        PeliculaViewHolder peliculaViewHolder = new PeliculaViewHolder(binding, adapterListener);
         return peliculaViewHolder;
     }
 
@@ -72,13 +74,10 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         Pelicula pelicula = mDataset.get(position);
         holder.bind(pelicula);
-    }
 
+    }
     @Override
     public int getItemCount() {
         return mDataset.size();
     }
-
-
-
 }

@@ -9,9 +9,9 @@
 
     <string-array name="Categorias">
         <item>Please select a value</item>
-        <item>Opinion</item>
-        <item>Efectos</item>
-        <item>Queseyo</item>
-        <item>asdas</item>
+        <item>Reseñas</item>
+        <item>Teorias</item>
+        <item>Curiosidades</item>
+        <item>Aspectos Técnicos</item>
     </string-array>
 </resources>
