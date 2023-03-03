@@ -35,7 +35,7 @@ public class PublicacionRecyclerAdapter extends RecyclerView.Adapter<Publicacion
             comentario = itemBinding.post;
         }
         public void bind(Publicacion_foro publicacion){
-            inicialNombre.setText(publicacion.getUsuario().substring(0,1));
+            inicialNombre.setText(publicacion.getUsuario().substring(0,1).toUpperCase());
             nombre.setText(publicacion.getUsuario());
             comentario.setText(publicacion.getComentario());
         }
