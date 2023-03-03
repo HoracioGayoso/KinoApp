@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,7 +25,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -50,6 +53,20 @@ public class ForoFragment extends Fragment {
     private foro_repositorio repoForo;
     private Pelicula pelicula;
     private FirebaseAuth mAuth;
+    private OnLogOutClickListener logOutClickListener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        super.onAttach(context);
+        if (context instanceof OnLogOutClickListener) {
+            logOutClickListener = (OnLogOutClickListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnMovieClickListener");
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,14 +97,16 @@ public class ForoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         TextView cabecera = view.findViewById(R.id.Cabecera);
-        ImageView logout = view.findViewById(R.id.IconoLogOut);
-        logout.setImageResource(R.drawable.ic_baseline_logout_24);
-        ImageView perfil = view.findViewById(R.id.IconoPerfil);
-        perfil.setImageResource(R.drawable.ic_baseline_person_24);
+        Button logout = view.findViewById(R.id.IconoLogOut);
+        Drawable logoutDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_logout_24);
+        logout.setCompoundDrawablesWithIntrinsicBounds(logoutDrawable, null, null, null);
+        Button perfil = view.findViewById(R.id.IconoPerfil);
+        Drawable perfilDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_person_24);
+        perfil.setCompoundDrawablesWithIntrinsicBounds(null, null, perfilDrawable, null);
         cabecera.setText("Foro");
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         Spinner mSpinner = foroBinding.spinner;
         Button botonAniadir = foroBinding.aniadirComentario;
         Button botonCancelar = foroBinding.cancelarPublicarButton;
@@ -210,7 +229,12 @@ public class ForoFragment extends Fragment {
 
             }
         });
-
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOutClickListener.OnLogOutClick();
+            }
+        });
 
     }
     public Categorias_foro getCategoriaFromSpinner(Spinner spinner){
@@ -234,4 +258,5 @@ public class ForoFragment extends Fragment {
         transaction.replace(R.id.fragment_container,listaPeliculasFragment );
         transaction.commit();
     }
+
 }

@@ -1,17 +1,19 @@
 package com.tpintegrador.kinoapp;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +31,7 @@ public class ListaPeliculasFragment extends Fragment {
     private pelicula_repositorio peliculaRepositorio;
     List<Pelicula> peliculas = new ArrayList<Pelicula>();
     private OnPeliculaClickListener mListener;
+    private OnLogOutClickListener logOutClickListener;
 
 
     public interface OnPeliculaClickListener {
@@ -37,8 +40,9 @@ public class ListaPeliculasFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnPeliculaClickListener) {
+        if (context instanceof OnPeliculaClickListener && context instanceof OnLogOutClickListener) {
             mListener = (OnPeliculaClickListener) context;
+            logOutClickListener = (OnLogOutClickListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnMovieClickListener");
@@ -57,10 +61,12 @@ public class ListaPeliculasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         TextView cabecera = view.findViewById(R.id.Cabecera);
-        ImageView logout = view.findViewById(R.id.IconoLogOut);
-        logout.setImageResource(R.drawable.ic_baseline_logout_24);
-        ImageView perfil = view.findViewById(R.id.IconoPerfil);
-        perfil.setImageResource(R.drawable.ic_baseline_person_24);
+        Button logout = view.findViewById(R.id.IconoLogOut);
+        Drawable logoutDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_logout_24);
+        logout.setCompoundDrawablesWithIntrinsicBounds(logoutDrawable, null, null, null);
+        Button perfil = view.findViewById(R.id.IconoPerfil);
+        Drawable perfilDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_baseline_person_24);
+        perfil.setCompoundDrawablesWithIntrinsicBounds(null, null, perfilDrawable, null);
         cabecera.setText("Peliculas");
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 //        peliculaRepositorio.insert(new Pelicula("Avengers", "2012", R.mipmap.avengers,
@@ -78,6 +84,12 @@ public class ListaPeliculasFragment extends Fragment {
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                 peliculasRecyclerView.setLayoutManager(layoutManager);
                 peliculasRecyclerView.setAdapter(mAdapter);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOutClickListener.OnLogOutClick();
             }
         });
     }

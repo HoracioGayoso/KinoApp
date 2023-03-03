@@ -15,7 +15,7 @@ import com.tpintegrador.kinoapp.databinding.MainActivityBinding;
 import com.tpintegrador.kinoapp.databinding.ToolBarBinding;
 import com.tpintegrador.kinoapp.model.Pelicula;
 
-public class MainActivity extends AppCompatActivity implements ListaPeliculasFragment.OnPeliculaClickListener {
+public class MainActivity extends AppCompatActivity implements ListaPeliculasFragment.OnPeliculaClickListener, OnLogOutClickListener {
     private MainActivityBinding maBinding;
     private ToolBarBinding tbBinding;
     private AppDatabase database;
@@ -50,16 +50,7 @@ public class MainActivity extends AppCompatActivity implements ListaPeliculasFra
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 // If the back stack is empty, show an alert dialog to confirm logout
-                new AlertDialog.Builder(this)
-                        .setTitle("Salir")
-                        .setMessage("Estas seguro que quieres salir?")
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                performLogout();
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, null)
-                        .show();
+                OnLogOutClick();
             } else {
                 super.onBackPressed();
             }
@@ -88,5 +79,19 @@ public class MainActivity extends AppCompatActivity implements ListaPeliculasFra
         args.putSerializable("pelicula", pelicula);
         foroFragment.setArguments(args);
         openFragmentAddStack(foroFragment);
+    }
+
+    @Override
+    public void OnLogOutClick() {
+        new AlertDialog.Builder(this)
+                .setTitle("Salir")
+                .setMessage("Estas seguro que quieres salir?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        performLogout();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .show();
     }
 }
