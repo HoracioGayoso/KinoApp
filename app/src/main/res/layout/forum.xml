@@ -54,7 +54,7 @@
                     android:gravity="bottom|center"
                     android:text="¡Bienvenidos al foro de"
                     android:textSize="20dp"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textSize="20dp"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"/>
             </LinearLayout>
             <LinearLayout
@@ -87,7 +87,7 @@
                     android:textAlignment="center"
                     android:lines="2"
                     android:text="Aquí podrás compartir tus ideas \n y comentarios acerca del film."
-                    android:textColor="@color/black" />
+                    android:textColor="?attr/colorOnSecondary" />
             </LinearLayout>
         </LinearLayout>
 
@@ -145,12 +145,14 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_gravity="center"
-            app:backgroundTint="@color/violet"
+            app:backgroundTint="?attr/colorPrimary"
             android:textStyle="bold"
             android:text="Añadir Comentario"
+            android:textColor="?attr/colorOnSecondary"
             android:textAllCaps="false"
             app:cornerRadius="15dp"
             app:icon="@drawable/ic_baseline_person_24"
+            app:iconTint="?attr/colorOnSecondary"
             />
         <com.google.android.material.button.MaterialButton
             android:id="@+id/volverCartelera"
@@ -159,12 +161,15 @@
             android:layout_weight="1"
             android:maxHeight="300dp"
             android:layout_gravity="center"
-            app:backgroundTint="@color/violet"
+            app:backgroundTint="?attr/colorPrimary"
             android:textStyle="bold"
             android:text="Volver a la cartelera"
+            android:textColor="?attr/colorOnSecondary"
             android:textAllCaps="false"
             app:cornerRadius="15dp"
-            app:icon="@drawable/ic_baseline_account_circle_24"/>
+            app:icon="@drawable/ic_baseline_account_circle_24"
+            app:iconTint="?attr/colorOnSecondary"
+            />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutSecundario"
