@@ -2,7 +2,6 @@ package com.tpintegrador.kinoapp;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements ListaPeliculasFra
 
     @Override
     public void OnPeliculaClick(Pelicula pelicula) {
-        Toast.makeText(this, "llego a activity", Toast.LENGTH_SHORT).show();
         ForoFragment foroFragment = new ForoFragment();
         Bundle args = new Bundle();
         args.putSerializable("pelicula", pelicula);

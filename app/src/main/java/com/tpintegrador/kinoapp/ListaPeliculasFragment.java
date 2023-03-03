@@ -69,21 +69,25 @@ public class ListaPeliculasFragment extends Fragment {
         perfil.setCompoundDrawablesWithIntrinsicBounds(null, null, perfilDrawable, null);
         cabecera.setText("Peliculas");
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-//        peliculaRepositorio.insert(new Pelicula("Avengers", "2012", R.mipmap.avengers,
-//                "Nick Fury, director de la agencia internacional S.H.I.E.L.D, necesita un equipo para evitar un desastre mundial"));
-//        peliculaRepositorio.insert(new Pelicula("Avatar", "2009", R.mipmap.avatar_foreground,
-//                "Un exmarine se une a los Na'vi en su lucha contra la explotación de los recursos de su planeta por parte de los humanos."));
-//        peliculaRepositorio.insert(new Pelicula("Harry Potter", "2001", R.mipmap.harry_foreground,
-//                "Harry, Ron y Hermione se unen para enfrentar una amenaza en Hogwarts y descubrir la verdad sobre los padres de Harry."));
         peliculaRepositorio.getAllPeliculas().observe(getViewLifecycleOwner(), new Observer<List<Pelicula>>() {
             @Override
             public void onChanged(List<Pelicula> peliculas) {
-                // Actualizar la vista con la nueva lista de tareas
-                PeliculasRecyclerAdapter mAdapter = new PeliculasRecyclerAdapter(peliculas, mListener);
-                RecyclerView peliculasRecyclerView = mBinding.PeliculaRecycler;
-                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-                peliculasRecyclerView.setLayoutManager(layoutManager);
-                peliculasRecyclerView.setAdapter(mAdapter);
+                if(peliculas.size()!=0) {
+                    // Actualizar la vista con la nueva lista de tareas
+                    PeliculasRecyclerAdapter mAdapter = new PeliculasRecyclerAdapter(peliculas, mListener);
+                    RecyclerView peliculasRecyclerView = mBinding.PeliculaRecycler;
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                    peliculasRecyclerView.setLayoutManager(layoutManager);
+                    peliculasRecyclerView.setAdapter(mAdapter);
+                }
+                else{
+                    peliculaRepositorio.insert(new Pelicula("Avengers", "2012", R.mipmap.avengers,
+                "Nick Fury, director de la agencia internacional S.H.I.E.L.D, necesita un equipo para evitar un desastre mundial"));
+                    peliculaRepositorio.insert(new Pelicula("Avatar", "2009", R.mipmap.avatar_foreground,
+                "Un exmarine se une a los Na'vi en su lucha contra la explotación de los recursos de su planeta por parte de los humanos."));
+                    peliculaRepositorio.insert(new Pelicula("Harry Potter", "2001", R.mipmap.harry_foreground,
+                "Harry, Ron y Hermione se unen para enfrentar una amenaza en Hogwarts y descubrir la verdad sobre los padres de Harry."));
+                }
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {

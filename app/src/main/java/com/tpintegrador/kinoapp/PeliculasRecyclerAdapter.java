@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +46,6 @@ public class PeliculasRecyclerAdapter extends RecyclerView.Adapter<PeliculasRecy
             foro.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "click", Toast.LENGTH_SHORT).show();
                     int position = getBindingAdapterPosition();
                     if (position != RecyclerView.NO_POSITION && holderListener != null) {
                         holderListener.OnPeliculaClick(pelicula);

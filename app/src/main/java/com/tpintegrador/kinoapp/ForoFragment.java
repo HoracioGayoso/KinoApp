@@ -17,10 +17,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -118,8 +119,6 @@ public class ForoFragment extends Fragment {
         this.requireContext().registerReceiver(br,filter);
 
 
-
-
         final Integer[] idForo = {null};
         Categorias_foro categorias_foro = Categorias_foro.get(mSpinner.getSelectedItem().toString());
 
@@ -153,7 +152,6 @@ public class ForoFragment extends Fragment {
                 LinearLayout layoutPublicacion = foroBinding.layoutLista;
                 LinearLayout layoutSecundario = foroBinding.layoutSecundario;
                 TextInputEditText campoTexto = foroBinding.comentarioEditText;
-
                 publicacion_repositorio repoPublicaciones = new publicacion_repositorio(getActivity().getApplication(), idForo[0]);
                 repoPublicaciones.insert(new Publicacion_foro(idForo[0],mAuth.getCurrentUser().getEmail(),campoTexto.getText().toString()));
                 layoutPublicacion.setVisibility(View.VISIBLE);
@@ -219,6 +217,7 @@ public class ForoFragment extends Fragment {
                             repoForo.insert(foroCuriosidades);
                             repoForo.insert(foroAspectos);
                         }
+                        parent.setSelection(parent.getSelectedItemPosition());
 
                     }
                 });

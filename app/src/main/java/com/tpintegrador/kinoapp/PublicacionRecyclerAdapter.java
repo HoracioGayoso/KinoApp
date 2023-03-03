@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tpintegrador.kinoapp.databinding.PublicacionItemBinding;
 import com.tpintegrador.kinoapp.model.Publicacion_foro;
 import com.tpintegrador.kinoapp.model.Usuario;
+import com.tpintegrador.kinoapp.repositorios.usuario_repositorio;
 
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class PublicacionRecyclerAdapter extends RecyclerView.Adapter<Publicacion
 
     private List<Publicacion_foro> mDataset;
     private List<Usuario> usuariosList;
+    private usuario_repositorio userRepo;
 
     public static class PublicacionViewHolder extends RecyclerView.ViewHolder{
         private PublicacionItemBinding itemBinding;
