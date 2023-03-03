@@ -39,7 +39,7 @@
             android:layout_marginBottom="5dp"
             android:hint="@string/user"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundColor="?attr/colorOnPrimary"
             app:boxStrokeWidth="2dp"
             app:boxCornerRadiusBottomEnd="45dp"
             app:boxCornerRadiusTopEnd="45dp"
@@ -50,7 +50,7 @@
                 android:id="@+id/usuario_textInputEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundColor="?attr/colorOnPrimary"
             android:hint="@string/pass"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeWidth="2dp"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:textColor="@color/black"
+                android:textColor="?attr/colorOnSecondary"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,6 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:buttonTint="?attr/colorPrimary"
                         android:text="Recordar mi usuario"
                         android:textAlignment="center"
                         android:textColor="@color/grey" />
@@ -106,17 +107,18 @@
                     android:id="@+id/ingresar_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:backgroundTint="@color/violet"
+                    app:backgroundTint="?attr/colorPrimary"
                     android:textStyle="bold"
                     android:text="Ingresar"
+                    android:textColor="?attr/colorOnPrimary"
                     android:textAllCaps="false"
                     app:cornerRadius="90dp"/>
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/crear_usuario_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/violet"
-                    app:backgroundTint="@color/white"
+                    android:textColor="?attr/colorPrimary"
+                    app:backgroundTint="?attr/colorOnPrimary"
                     android:textStyle="bold"
                     android:text="Crear Usuario"
                     android:textAllCaps="false"
@@ -131,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/olvido_contraseña"
-            android:textColorLink="@color/violet"
+            android:textColorLink="?attr/colorPrimary"
             android:linksClickable="true"
             android:gravity="center"
             android:padding="10dp"
@@ -164,7 +166,7 @@
                     android:layout_height="match_parent"
                     android:text="Creacion de usuario"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="22dp"
                     android:paddingLeft="10dp"
@@ -179,7 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Nombre"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -198,7 +200,7 @@
                     android:layout_marginBottom="5dp"
                     android:hint="@string/name"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="?attr/colorOnPrimary"
                     app:boxStrokeWidth="2dp"
                     app:boxCornerRadiusBottomEnd="45dp"
                     app:boxCornerRadiusTopEnd="45dp"
@@ -209,7 +211,7 @@
                         android:id="@+id/nuevoUsuarioNombre_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -221,7 +223,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Apellido"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -240,7 +242,7 @@
                     android:layout_marginBottom="5dp"
                     android:hint="@string/surname"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="?attr/colorOnPrimary"
                     app:boxStrokeWidth="2dp"
                     app:boxCornerRadiusBottomEnd="45dp"
                     app:boxCornerRadiusTopEnd="45dp"
@@ -251,7 +253,7 @@
                         android:id="@+id/nuevoUsuarioApellido_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -263,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Correo electronico"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -282,7 +284,7 @@
                     android:layout_marginBottom="5dp"
                     android:hint="@string/user"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="?attr/colorOnPrimary"
                     app:boxStrokeWidth="2dp"
                     app:boxCornerRadiusBottomEnd="45dp"
                     app:boxCornerRadiusTopEnd="45dp"
@@ -293,7 +295,7 @@
                         android:id="@+id/nuevoUsuario_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -304,7 +306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Contraseña"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -323,7 +325,7 @@
                     android:layout_marginBottom="5dp"
                     android:hint="@string/pass"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="?attr/colorOnPrimary"
                     app:boxStrokeWidth="2dp"
                     app:boxCornerRadiusBottomEnd="45dp"
                     app:boxCornerRadiusTopEnd="45dp"
@@ -334,7 +336,7 @@
                         android:id="@+id/nuevaContrasena_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -345,7 +347,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Confirme nueva contraseña"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:paddingLeft="10dp"
@@ -364,7 +366,7 @@
                     android:layout_marginBottom="5dp"
                     android:hint="@string/newpass"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="?attr/colorOnPrimary"
                     app:boxStrokeWidth="2dp"
                     app:boxCornerRadiusBottomEnd="45dp"
                     app:boxCornerRadiusTopEnd="45dp"
@@ -375,7 +377,7 @@
                         android:id="@+id/confirmarNuevaContrasena_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textColor="@color/black"
+                        android:textColor="?attr/colorOnSecondary"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -388,9 +390,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    app:backgroundTint="@color/violet"
+                    app:backgroundTint="?attr/colorPrimary"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:text="Cancelar"
                     android:textAllCaps="false"
                     app:cornerRadius="90dp"/>
@@ -399,9 +401,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    app:backgroundTint="@color/violet"
+                    app:backgroundTint="?attr/colorPrimary"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="?attr/colorOnSecondary"
                     android:text="Confirmar"
                     android:textAllCaps="false"
                     app:cornerRadius="90dp"/>

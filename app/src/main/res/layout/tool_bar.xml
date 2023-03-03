@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/violet"
+        android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -31,7 +31,7 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textColor="@color/black"></TextView>
+                android:textColor="?attr/colorOnSecondary"></TextView>
             <ImageView
                 android:id="@+id/IconoPerfil"
                 android:layout_width="0sp"

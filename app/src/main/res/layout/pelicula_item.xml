@@ -13,7 +13,7 @@
     card_view:cardUseCompatPadding="true"
     card_view:cardCornerRadius="15dp"
     card_view:cardElevation="5dp"
-    app:cardBackgroundColor="#F1F1F1">
+    app:cardBackgroundColor="?attr/colorSecondaryVariant">
            <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent"
@@ -50,7 +50,7 @@
                    android:textSize="22sp"
                    android:textStyle="bold"
                    android:gravity="bottom|left"
-                   android:textColor="@color/black"
+                   android:textColor="?attr/colorOnSecondary"
                    />
                <TextView
                    android:id="@+id/anio"
@@ -60,7 +60,7 @@
                    android:textSize="14sp"
                    android:textStyle="bold"
                    android:gravity="start"
-                   android:textColor="@color/black"/>
+                   android:textColor="?attr/colorOnSecondary"/>
            </LinearLayout>
 
            <LinearLayout
@@ -75,10 +75,11 @@
                    android:id="@+id/botonForo"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   app:backgroundTint="@color/violet"
+                   app:backgroundTint="?attr/colorPrimary"
                    android:padding="6dp"
                    android:textStyle="bold"
                    android:text="Ir a Foro"
+                   android:textColor="?attr/colorOnSecondary"
                    android:textSize="11sp"
                    android:textAllCaps="false"
                    app:cornerRadius="90dp"/>
@@ -87,10 +88,11 @@
                    android:id="@+id/botonReserva"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   app:backgroundTint="@color/violet"
+                   app:backgroundTint="?attr/colorPrimary"
                    android:padding="6dp"
                    android:textStyle="bold"
                    android:text="Ir a Reserva"
+                   android:textColor="?attr/colorOnSecondary"
                    android:textSize="11sp"
                    android:textAllCaps="false"
                    app:cornerRadius="90dp"/>
