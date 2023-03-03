@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -91,7 +92,7 @@ public class ForoFragment extends Fragment {
         Button botonAniadir = foroBinding.aniadirComentario;
         Button botonCancelar = foroBinding.cancelarPublicarButton;
         Button botonPublicar = foroBinding.publicarButton;
-
+        Button botonVolver = foroBinding.volverCartelera;
         BroadcastReceiver br = new receiverNotificaciones();
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_ALL_APPS);
@@ -108,8 +109,7 @@ public class ForoFragment extends Fragment {
             public void onClick(View v) {
                 LinearLayout layoutPublicacion = foroBinding.layoutLista;
                 LinearLayout layoutSecundario = foroBinding.layoutSecundario;
-                System.out.println("Clickeo!");
-                layoutPublicacion.setVisibility(View.INVISIBLE);
+                layoutPublicacion.setVisibility(View.GONE);
                 layoutSecundario.setVisibility(View.VISIBLE);
             }
         });
@@ -121,6 +121,10 @@ public class ForoFragment extends Fragment {
                 LinearLayout layoutSecundario = foroBinding.layoutSecundario;
                 layoutPublicacion.setVisibility(View.VISIBLE);
                 layoutSecundario.setVisibility(View.GONE);
+                TextInputEditText campoTexto = foroBinding.comentarioEditText;
+                campoTexto.getText().clear();
+                int posicion = mSpinner.getSelectedItemPosition();
+                mSpinner.setSelection(posicion);
             }
         });
         botonPublicar.setOnClickListener(new View.OnClickListener() {
@@ -135,22 +139,25 @@ public class ForoFragment extends Fragment {
                 repoPublicaciones.insert(new Publicacion_foro(idForo[0],mAuth.getCurrentUser().getEmail(),campoTexto.getText().toString()));
                 layoutPublicacion.setVisibility(View.VISIBLE);
                 layoutSecundario.setVisibility(View.GONE);
-                campoTexto.setText("");
-
+                campoTexto.getText().clear();
                 Intent notificationIntent = new Intent(v.getContext(),receiverNotificaciones.class);
                 notificationIntent.putExtra("nombreForo",mSpinner.getSelectedItem().toString().toLowerCase());
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(),0,notificationIntent,PendingIntent.FLAG_IMMUTABLE);
 
                 AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP,2000,pendingIntent);
-                System.out.println("Creado alarmManager \n");
                 int posicion = mSpinner.getSelectedItemPosition();
                 mSpinner.setSelection(posicion);
 
             }
         });
 
-
+        botonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                volverAListaPeliculas();
+            }
+        });
 
         publicacion_repositorio repoPublicaciones = new publicacion_repositorio(getActivity().getApplication(),1);
 
@@ -164,7 +171,7 @@ public class ForoFragment extends Fragment {
                     @Override
                     public void onChanged(List<Foro> foros) {
 
-                        if(foros!=null){
+                        if(foros.size()!=0){
                             System.out.println("Foros es "+foros.toString()+"\n");
                              idForo[0] = foros.get(0).getId();
                             publicacion_repositorio repoPublicaciones = new publicacion_repositorio(getActivity().getApplication(), idForo[0]);
@@ -181,6 +188,17 @@ public class ForoFragment extends Fragment {
                                     }
                                 }
                             });
+                        }
+                        else{
+                            Foro foroResenia = new Foro(pelicula.getId(),Categorias_foro.RESEÑAS);
+                            Foro foroTeoria = new Foro(pelicula.getId(),Categorias_foro.TEORIAS);
+                            Foro foroCuriosidades = new Foro(pelicula.getId(),Categorias_foro.CURIOSIDADES);
+                            Foro foroAspectos = new Foro(pelicula.getId(),Categorias_foro.ASPECTOS_TECNICOS);
+
+                            repoForo.insert(foroResenia);
+                            repoForo.insert(foroTeoria);
+                            repoForo.insert(foroCuriosidades);
+                            repoForo.insert(foroAspectos);
                         }
 
                     }
@@ -210,5 +228,10 @@ public class ForoFragment extends Fragment {
         }
 
     }
-
+    private void volverAListaPeliculas(){
+        ListaPeliculasFragment listaPeliculasFragment = new ListaPeliculasFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,listaPeliculasFragment );
+        transaction.commit();
+    }
 }
