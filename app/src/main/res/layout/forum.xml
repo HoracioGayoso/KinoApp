@@ -120,6 +120,7 @@
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layoutLista"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6.5"
@@ -158,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-
+            android:maxHeight="300dp"
             android:layout_gravity="center"
             app:backgroundTint="?attr/colorPrimary"
             android:textStyle="bold"
@@ -169,5 +170,125 @@
             app:icon="@drawable/ic_baseline_account_circle_24"
             app:iconTint="?attr/colorOnSecondary"
             />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layoutSecundario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:weightSum="10"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/fondo_redondeado">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/fondo_redondeado_violeta"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Realizar una publicacion"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="22dp"
+                    android:paddingLeft="10dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="left">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Foro:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+                <TextView
+                    android:id="@+id/categoriaForoTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:paddingLeft="4dp"
+                    android:paddingVertical="5dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/comentarioTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:minHeight="300dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="Ingrese su comentario aqui"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxBackgroundColor="@color/white"
+                    app:boxStrokeWidth="2dp"
+                    app:boxCornerRadiusBottomEnd="45dp"
+                    app:boxCornerRadiusTopEnd="45dp"
+                    app:boxCornerRadiusBottomStart="45dp"
+                    app:boxCornerRadiusTopStart="45dp"
+                    android:gravity="top"
+                    android:maxLines="20"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/comentarioEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:maxLines="20"
+                        android:maxLength="600"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancelarPublicarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:backgroundTint="@color/violet"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Cancelar"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/publicarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:backgroundTint="@color/violet"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="Publicar"
+                    android:textAllCaps="false"
+                    app:cornerRadius="90dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -17,6 +17,14 @@ public class Usuario {
     @ColumnInfo(name = "apellido")
     String apellido;
 
+    public Usuario(){}
+
+    public Usuario(String correo, String nombre, String apellido){
+        this.correo = correo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public String getCorreo() {
         return correo;
     }

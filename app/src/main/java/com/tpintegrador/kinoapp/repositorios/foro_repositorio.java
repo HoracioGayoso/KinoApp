@@ -21,7 +21,6 @@ public class foro_repositorio {
         AppDatabase database = AppDatabase.getInstance(application);
         foroDao = database.foroDao();
         allForos = foroDao.getAllForos();
-
     }
 
     public LiveData<List<Foro>> getAllForos() {

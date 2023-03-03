@@ -32,15 +32,14 @@ public class PublicacionRecyclerAdapter extends RecyclerView.Adapter<Publicacion
             nombre = itemBinding.nombreUsuario;
             comentario = itemBinding.post;
         }
-        public void bind(Usuario usuario, Publicacion_foro publicacion){
-            inicialNombre.setText(usuario.getNombre().substring(0,0));
-            nombre.setText(usuario.getNombre().toString());
+        public void bind(Publicacion_foro publicacion){
+            inicialNombre.setText(publicacion.getUsuario().substring(0,1));
+            nombre.setText(publicacion.getUsuario());
             comentario.setText(publicacion.getComentario());
         }
     }
-    public PublicacionRecyclerAdapter(List<Publicacion_foro> myDataset, List<Usuario> usuariosList){
+    public PublicacionRecyclerAdapter(List<Publicacion_foro> myDataset){
         mDataset = myDataset;
-        usuariosList = usuariosList;
     }
     @NonNull
     @Override
@@ -53,14 +52,7 @@ public class PublicacionRecyclerAdapter extends RecyclerView.Adapter<Publicacion
     @Override
     public void onBindViewHolder(@NonNull PublicacionViewHolder holder, int position) {
         Publicacion_foro publicacion = mDataset.get(position);
-        Usuario postOwner;
-        for (Usuario usuario:
-             usuariosList) {
-            if(publicacion.getUsuario().equals(usuario.getCorreo())){
-                postOwner = usuario;
-                holder.bind(postOwner,publicacion);
-            }
-        }
+        holder.bind(publicacion);
     }
     @Override
     public int getItemCount() {

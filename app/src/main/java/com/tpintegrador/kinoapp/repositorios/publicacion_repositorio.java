@@ -16,8 +16,9 @@ public class publicacion_repositorio {
     private LiveData<List<Publicacion_foro>> publicacionesByForo;
     public publicacion_repositorio(Application application, Integer foro) {
         AppDatabase database = AppDatabase.getInstance(application);
-        publicacionDao = database.publicaionDao();
+        publicacionDao = database.publicacionDao();
         publicacionesByForo = publicacionDao.getPublicacionByForo(foro);
+
     }
     public LiveData<List<Publicacion_foro>> getPublicacionesByForo() {
         return publicacionesByForo;

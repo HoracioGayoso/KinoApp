@@ -4,6 +4,7 @@ package com.tpintegrador.kinoapp.model;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
@@ -32,6 +33,14 @@ public class Publicacion_foro {
     @ColumnInfo(name = "comentario")
     String comentario;
 
+    @Ignore
+    public Publicacion_foro(){}
+
+    public Publicacion_foro(Integer Foro, String usuario, String comentario){
+        this.Foro = Foro;
+        this.usuario = usuario;
+        this.comentario = comentario;
+    }
     public Integer getId() {
         return id;
     }

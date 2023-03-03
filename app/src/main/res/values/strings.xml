@@ -8,7 +8,6 @@
     <string name="olvido_contraseña"><a href="https://www.geeksforgeeks.org/">¿Olvidaste tu contraseña?</a></string>
 
     <string-array name="Categorias">
-        <item>Please select a value</item>
         <item>Reseñas</item>
         <item>Teorias</item>
         <item>Curiosidades</item>

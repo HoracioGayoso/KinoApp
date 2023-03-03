@@ -20,6 +20,11 @@ public class  Foro {
     @ColumnInfo(name = "categoria")
     Categorias_foro categoria;
 
+    public Foro(Integer pelicula, Categorias_foro categoria) {
+        this.pelicula = pelicula;
+        this.categoria = categoria;
+    }
+
     public Integer getId() {
         return id;
     }
