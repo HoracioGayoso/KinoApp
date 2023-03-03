@@ -1,5 +1,14 @@
 package com.tpintegrador.kinoapp;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +23,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -21,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 import com.tpintegrador.kinoapp.databinding.ForumBinding;
 import com.tpintegrador.kinoapp.model.Categorias_foro;
 import com.tpintegrador.kinoapp.model.Foro;
@@ -33,15 +44,19 @@ import java.util.List;
 
 
 public class ForoFragment extends Fragment {
+    static String channelId = "10";
     private ForumBinding foroBinding;
     private foro_repositorio repoForo;
     private Pelicula pelicula;
+    private FirebaseAuth mAuth;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        foroBinding = ForumBinding.inflate(inflater, container, false);
 
 //        return super.onCreateView(inflater, container, savedInstanceState);
+        crearCanalNotificaciones();
+
         foroBinding = ForumBinding.inflate(inflater, container, false);
         Spinner mSpinner = foroBinding.spinner;
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this.getActivity(),
@@ -59,9 +74,12 @@ public class ForoFragment extends Fragment {
         return foroBinding.getRoot();
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         TextView cabecera = view.findViewById(R.id.Cabecera);
         ImageView logout = view.findViewById(R.id.IconoLogOut);
@@ -73,6 +91,15 @@ public class ForoFragment extends Fragment {
         Button botonAniadir = foroBinding.aniadirComentario;
         Button botonCancelar = foroBinding.cancelarPublicarButton;
         Button botonPublicar = foroBinding.publicarButton;
+
+        BroadcastReceiver br = new receiverNotificaciones();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_ALL_APPS);
+        this.requireContext().registerReceiver(br,filter);
+
+
+
+
         final Integer[] idForo = {null};
         Categorias_foro categorias_foro = Categorias_foro.get(mSpinner.getSelectedItem().toString());
 
@@ -82,7 +109,7 @@ public class ForoFragment extends Fragment {
                 LinearLayout layoutPublicacion = foroBinding.layoutLista;
                 LinearLayout layoutSecundario = foroBinding.layoutSecundario;
                 System.out.println("Clickeo!");
-                layoutPublicacion.setVisibility(View.GONE);
+                layoutPublicacion.setVisibility(View.INVISIBLE);
                 layoutSecundario.setVisibility(View.VISIBLE);
             }
         });
@@ -92,12 +119,12 @@ public class ForoFragment extends Fragment {
             public void onClick(View v) {
                 LinearLayout layoutPublicacion = foroBinding.layoutLista;
                 LinearLayout layoutSecundario = foroBinding.layoutSecundario;
-                System.out.println("Clickeo!");
                 layoutPublicacion.setVisibility(View.VISIBLE);
                 layoutSecundario.setVisibility(View.GONE);
             }
         });
         botonPublicar.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 LinearLayout layoutPublicacion = foroBinding.layoutLista;
@@ -105,12 +132,21 @@ public class ForoFragment extends Fragment {
                 TextInputEditText campoTexto = foroBinding.comentarioEditText;
 
                 publicacion_repositorio repoPublicaciones = new publicacion_repositorio(getActivity().getApplication(), idForo[0]);
-                repoPublicaciones.insert(new Publicacion_foro(idForo[0],"escowichmartin@gmail.com",campoTexto.getText().toString()));
+                repoPublicaciones.insert(new Publicacion_foro(idForo[0],mAuth.getCurrentUser().getEmail(),campoTexto.getText().toString()));
                 layoutPublicacion.setVisibility(View.VISIBLE);
                 layoutSecundario.setVisibility(View.GONE);
                 campoTexto.setText("");
-                Integer posicion = mSpinner.getSelectedItemPosition();
+
+                Intent notificationIntent = new Intent(v.getContext(),receiverNotificaciones.class);
+                notificationIntent.putExtra("nombreForo",mSpinner.getSelectedItem().toString().toLowerCase());
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(v.getContext(),0,notificationIntent,PendingIntent.FLAG_IMMUTABLE);
+
+                AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP,2000,pendingIntent);
+                System.out.println("Creado alarmManager \n");
+                int posicion = mSpinner.getSelectedItemPosition();
                 mSpinner.setSelection(posicion);
+
             }
         });
 
@@ -145,9 +181,8 @@ public class ForoFragment extends Fragment {
                                     }
                                 }
                             });
-
-
                         }
+
                     }
                 });
             }
@@ -158,10 +193,22 @@ public class ForoFragment extends Fragment {
             }
         });
 
-        mSpinner.setSelection(0);
 
     }
     public Categorias_foro getCategoriaFromSpinner(Spinner spinner){
         return Categorias_foro.get(spinner.getSelectedItem().toString());
     }
+    private void crearCanalNotificaciones() {
+        CharSequence name = "CanalNotificacionesKino";
+        String description = "Canal de notificaciones de KinoApp";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId,name,importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+    }
+
 }

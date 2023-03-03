@@ -1,7 +1,5 @@
 package com.tpintegrador.kinoapp;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -18,14 +15,16 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tpintegrador.kinoapp.databinding.LoginBinding;
+import com.tpintegrador.kinoapp.model.Usuario;
+import com.tpintegrador.kinoapp.repositorios.usuario_repositorio;
 
 public class LoginFragment extends Fragment {
     private LoginBinding logginBinding;
     private FirebaseAuth mAuth;
+    private usuario_repositorio repoUsuario;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,6 +38,7 @@ public class LoginFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         TextInputLayout usuario = logginBinding.usuarioTextImputLayout;
         TextInputLayout contraseña = logginBinding.contrasenaTextImputLayout;
+        repoUsuario = new usuario_repositorio(getActivity().getApplication());
         logginBinding.ingresarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,9 +58,16 @@ public class LoginFragment extends Fragment {
         logginBinding.confirmarNuevoUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(usuario.getEditText().getText().toString().isEmpty() ||
-                        contraseña.getEditText().getText().toString().isEmpty()){
+                if(logginBinding.nuevoUsuario.getEditText().getText().toString().isEmpty() ||
+                        logginBinding.nuevoUsuarioNombre.getEditText().getText().toString().isEmpty() ||
+                        logginBinding.nuevoUsuarioApellido.getEditText().getText().toString().isEmpty() ||
+                        logginBinding.nuevaContrasena.getEditText().getText().toString().isEmpty() ||
+                        logginBinding.confirmarNuevaContrasena.getEditText().getText().toString().isEmpty()){
                     showAlert("Complete los datos");
+                    return;
+                }
+                else if(!logginBinding.nuevaContrasena.getEditText().getText().toString().equals(logginBinding.confirmarNuevaContrasena.getEditText().getText().toString())){
+                    showAlert("Contraseñas diferentes");
                     return;
                 }
                 LinearLayout layoutUsuario = logginBinding.layoutSecundario;
@@ -112,6 +119,9 @@ public class LoginFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    repoUsuario.insert(new Usuario(usuario.getEditText().getText().toString(),
+                            logginBinding.nuevoUsuarioNombre.getEditText().getText().toString(),
+                            logginBinding.nuevoUsuarioApellido.getEditText().getText().toString()));
                     showAlert("Usuario y contraseña creados");
                 }
                 else {
