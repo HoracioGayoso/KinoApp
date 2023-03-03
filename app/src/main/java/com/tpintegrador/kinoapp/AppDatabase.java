@@ -1,14 +1,13 @@
 package com.tpintegrador.kinoapp;
 
 
+import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
-import android.content.Context;
 
 import com.tpintegrador.kinoapp.dao.foro_dao;
 import com.tpintegrador.kinoapp.dao.funcion_dao;
@@ -45,6 +44,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract usuario_dao usuarioDao();
     public abstract pelicula_dao peliculaDao();
     public abstract funcion_dao funcionDao();
-    public abstract publicacion_dao publicaionDao();
+    public abstract publicacion_dao publicacionDao();
     public abstract foro_dao foroDao();
 }
